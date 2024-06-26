@@ -5,8 +5,8 @@ STRINGCHUNK = re.compile(r'.*?(?P<terminator>["\n\\\x00-\x1f])', FLAGS)
 BACKSLASH = {'"': '"', "\\": "\\", "/": "/", "b": "\b", "f": "\f", "n": "\n", "r": "\r", "t": "\t"}
 
 
-def _decode_uXXXX(s, pos):  # s = "uxxxx"
-    esc = s[pos + 1 : pos + 5]  # esc = "xxxx"
+def _decode_uXXXX(string: str, pos: int):  # s = "uxxxx"
+    esc = string[pos + 1 : pos + 5]  # esc = "xxxx"
     if len(esc) == 4 and esc[1] not in "xX":
         try:
             return int(esc, 16)
@@ -15,7 +15,7 @@ def _decode_uXXXX(s, pos):  # s = "uxxxx"
     raise Exception("Invalid \\uXXXX escape")
 
 
-def string_parser(string, end) -> int:
+def string_parser(string: str, end: int) -> int:
     start = end - 1
 
     while True:

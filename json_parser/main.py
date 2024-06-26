@@ -8,7 +8,7 @@ WHITESPACE = re.compile(r"[ \t\n\r]*", FLAGS)
 WHITESPACE_STR = " \t\n\r"
 
 
-def object_parser(string, end) -> int:
+def object_parser(string: str, end: int) -> int:
     next_char = string[end : end + 1]
     if next_char:
         # white-space
@@ -67,7 +67,7 @@ def object_parser(string, end) -> int:
         end += 1
 
 
-def array_parser(string, end) -> int:
+def array_parser(string: str, end: int) -> int:
     next_char = string[end : end + 1]
     if next_char in WHITESPACE_STR:
         end = WHITESPACE.match(string, end).end()
@@ -92,7 +92,7 @@ def array_parser(string, end) -> int:
             raise Exception("Unexpected `,` appeared in the array")
 
 
-def main(string: str, end=0) -> int:
+def main(string: str, end: int = 0) -> int:
     if string[end : end + 1] in WHITESPACE_STR:
         end = WHITESPACE.match(string, end).end()
     #
