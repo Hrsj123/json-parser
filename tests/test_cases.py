@@ -15,8 +15,8 @@ class TestStep1:
     def test_invalid_json(self, path: str):
         with open(path.format("step1", "invalid")) as f:
             string = f.read()
-            with pytest.raises(Exception, match="Parsing error at position \\d+"):
-                check_json(string)
+        with pytest.raises(Exception, match="Parsing error at position \\d+"):
+            check_json(string)
 
     def test_valid_json(self, path: str):
         with open(path.format("step1", "valid")) as f:
@@ -46,8 +46,8 @@ class TestStep3:
     def test_invalid_json(self, path: str):
         with open(path.format("step3", "invalid")) as f:
             string = f.read()
-            with pytest.raises(Exception, match="Expecting a valid value in key-value pair"):
-                check_json(string)
+        with pytest.raises(Exception, match="Expecting a valid value in key-value pair"):
+            check_json(string)
 
     def test_valid_json(self, path: str):
         with open(path.format("step3", "valid")) as f:
