@@ -1,4 +1,4 @@
-import os
+from pathlib import Path
 from typing import List
 
 import pytest
@@ -78,10 +78,14 @@ def other_path():
 
 class TestOtherCases:
     _fail_files: List[str] = [
-        file for file in os.listdir("./tests/test") if file.startswith("fail")
+        file.name
+        for file in Path("./tests/test/").iterdir()
+        if file.is_file() and file.name.startswith("fail")
     ]
     _pass_files: List[str] = [
-        file for file in os.listdir("./tests/test") if file.startswith("pass")
+        file.name
+        for file in Path("./tests/test/").iterdir()
+        if file.is_file() and file.name.startswith("pass")
     ]
 
     @pytest.mark.parametrize("fail_file", _fail_files)
