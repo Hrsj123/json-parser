@@ -15,3 +15,11 @@ from json_parser import check_json
 string = '{"key": "value"}'
 check_json(string)          # Returns True or throws `Exception` error
 ```
+
+### To try cli based test:
+**In Root Dir:**
+- `$ pip install -e .`
+
+#### A test json file `test_cli.json` is present here!
+-  $ check-json \<file-path-of-json\>
+- `$ check-json ./test_cli.json`

@@ -2,6 +2,7 @@ import re
 
 from .other_parsers import other_parsers
 from .string_parser import string_parser
+from .utils import arg_parser
 
 FLAGS = re.VERBOSE | re.MULTILINE | re.DOTALL
 WHITESPACE = re.compile(r"[ \t\n\r]*", FLAGS)
@@ -116,3 +117,9 @@ def check_json(string: str):
         return True
     else:
         raise Exception(f"Unknown characters after pos: {res}")
+
+
+def _cli():
+    json_string = arg_parser()
+    res = check_json(json_string)
+    print(res)

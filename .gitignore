@@ -3,7 +3,10 @@
 
 # Envs
 .env
-.venv
+
+# Venv's
+env
+venv
 
 # Caches
 .pytest_cache
@@ -11,3 +14,7 @@ __pycache__
 
 # Temp files
 temp
+
+# setuptools files
+*.txt
+PKG-INFO
